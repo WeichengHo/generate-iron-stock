@@ -1,0 +1,23 @@
+
+> ironclad-ledger@0.1.0 dev
+> next dev
+
+  ▲ Next.js 14.2.3
+  - Local:        http://localhost:3000
+
+ ✓ Starting...
+ ✓ Ready in 1998ms
+ ○ Compiling / ...
+ ✓ Compiled / in 5.7s (533 modules)
+ ✓ Compiled in 812ms (254 modules)
+ GET / 200 in 6543ms
+ ○ Compiling /restock ...
+ ✓ Compiled /restock in 3.8s (514 modules)
+ GET /restock 200 in 3958ms
+ ✓ Compiled /ship in 241ms (516 modules)
+ GET /ship 200 in 308ms
+ ✓ Compiled /history in 189ms (518 modules)
+ GET /history 200 in 251ms
+ ✓ Compiled in 707ms (241 modules)
+ ✓ Compiled in 1238ms (255 modules)
+ ✓ Compiled in 297ms (255 modules)
