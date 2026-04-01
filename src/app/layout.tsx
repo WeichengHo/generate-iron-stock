@@ -21,12 +21,16 @@ export default function RootLayout({
       <head>
         <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet" />
       </head>
-      <body className={`${publicSans.className} bg-background text-on-surface min-h-screen pb-[120px]`}>
-        <TopAppBar />
+      <body className={`${publicSans.className} bg-background flex justify-center min-h-screen`}>
+        <div className="w-full max-w-lg bg-background relative min-h-screen shadow-2xl flex flex-col">
+          <TopAppBar />
 
-        {children}
+          <div className="flex-1 pb-safe">
+            {children}
+          </div>
 
-        <BottomNav />
+          <BottomNav />
+        </div>
       </body>
     </html>
   );
