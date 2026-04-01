@@ -7,6 +7,12 @@
     display: inline-block;
     vertical-align: middle;
 }
+@layer utilities {
+  .pb-safe {
+    padding-bottom: env(safe-area-inset-bottom, 20px);
+  }
+}
+
 body {
     font-family: 'Public Sans', sans-serif;
     -webkit-font-smoothing: antialiased;
