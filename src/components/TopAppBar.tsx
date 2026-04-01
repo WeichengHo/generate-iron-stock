@@ -19,16 +19,16 @@ export default function TopAppBar() {
   }
 
   return (
-    <header className="h-[72px] w-full max-w-lg mx-auto top-0 border-none bg-primary shadow-sm flex items-center justify-between px-6 z-50 sticky">
+    <header className="h-[72px] w-full docked top-0 border-none bg-neutral-50 dark:bg-neutral-900 shadow-sm flex items-center justify-between px-6 z-50 sticky">
       <div className="flex items-center gap-4">
-        <button className="active:scale-95 transition-transform text-white">
-          <span className="material-symbols-outlined" style={{ fontSize: '28px' }}>{icon}</span>
+        <button className="active:scale-95 transition-transform text-blue-900 dark:text-blue-400">
+          <span className="material-symbols-outlined" style={{ fontSize: '32px' }}>{icon}</span>
         </button>
-        <h1 className="font-headline font-bold text-2xl uppercase tracking-wider text-white">{title}</h1>
+        <h1 className="font-public-sans font-bold text-2xl uppercase tracking-wider text-blue-900 dark:text-blue-400">{title}</h1>
       </div>
       <div className="flex items-center">
-        <button className="active:scale-95 transition-transform text-white">
-          <span className="material-symbols-outlined" style={{ fontSize: '28px' }}>account_circle</span>
+        <button className="active:scale-95 transition-transform text-blue-900 dark:text-blue-400">
+          <span className="material-symbols-outlined" style={{ fontSize: '32px' }}>account_circle</span>
         </button>
       </div>
     </header>
