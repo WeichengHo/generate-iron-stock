@@ -6,21 +6,14 @@
   - Local:        http://localhost:3000
 
  ✓ Starting...
- ✓ Ready in 1998ms
+ ✓ Ready in 1903ms
  ○ Compiling / ...
- ✓ Compiled / in 5.7s (533 modules)
- ✓ Compiled in 812ms (254 modules)
- GET / 200 in 6543ms
+ ✓ Compiled / in 6.4s (547 modules)
+ ✓ Compiled in 909ms (261 modules)
+ GET / 200 in 7378ms
  ○ Compiling /restock ...
- ✓ Compiled /restock in 3.8s (514 modules)
- GET /restock 200 in 3958ms
- ✓ Compiled /ship in 241ms (516 modules)
- GET /ship 200 in 308ms
- ✓ Compiled /history in 189ms (518 modules)
- GET /history 200 in 251ms
- ✓ Compiled in 707ms (241 modules)
- ✓ Compiled in 1238ms (255 modules)
- ✓ Compiled in 297ms (255 modules)
- ✓ Compiled in 3.3s (255 modules)
- ✓ Compiled in 327ms (255 modules)
- ✓ Compiled in 289ms (255 modules)
+ ✓ Compiled /restock in 3.6s (530 modules)
+ GET /restock 200 in 3791ms
+ ✓ Compiled /history in 249ms (536 modules)
+ GET /history 200 in 311ms
+ ✓ Compiled in 505ms (265 modules)

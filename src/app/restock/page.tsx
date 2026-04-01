@@ -4,33 +4,33 @@ import { useState, useMemo } from "react";
 
 export default function RestockPage() {
   const [supplier, setSupplier] = useState("Global Steel Dynamics");
-  const [selectedSize, setSelectedSize] = useState("#3");
-  const [weight, setWeight] = useState(12.0);
-  const [costPerTon, setCostPerTon] = useState("");
+  const [selectedSize, setSelectedSize] = useState("3分");
+  const [weight, setWeight] = useState(1200);
+  const [costPerKg, setCostPerKg] = useState("");
 
   const sizes = [
-    { id: "#3", label: "10mm" },
-    { id: "#4", label: "13mm" },
-    { id: "#5", label: "16mm" },
-    { id: "#6", label: "19mm" },
+    { id: "3分", label: "10mm" },
+    { id: "4分", label: "13mm" },
+    { id: "5分", label: "16mm" },
+    { id: "6分", label: "19mm" },
   ];
 
   const handleWeightChange = (delta: number) => {
-    setWeight((prev) => Math.max(0, parseFloat((prev + delta).toFixed(1))));
+    setWeight((prev) => Math.max(0, prev + delta));
   };
 
   const estimatedTotal = useMemo(() => {
-    const cost = parseFloat(costPerTon);
+    const cost = parseFloat(costPerKg);
     if (isNaN(cost) || cost <= 0) return 0;
     return weight * cost;
-  }, [weight, costPerTon]);
+  }, [weight, costPerKg]);
 
   const handleSubmit = () => {
-    alert(`進貨資料已提交！\n供應商: ${supplier}\n尺寸: ${selectedSize}\n重量: ${weight} 公噸\n單價: $${costPerTon || 0}\n總金額: $${estimatedTotal.toLocaleString()}`);
+    alert(`進貨資料已提交！\n供應商: ${supplier}\n尺寸: ${selectedSize}\n重量: ${weight} 公斤\n單價: $${costPerKg || 0}\n總金額: $${estimatedTotal.toLocaleString()}`);
   };
 
   return (
-    <main className="max-w-md mx-auto px-6 py-8 space-y-10 pb-[120px]">
+    <main className="max-w-md mx-auto px-6 py-8 space-y-10">
       {/* Step 1: Select Supplier */}
       <section className="space-y-4">
         <div className="flex items-center gap-3">
@@ -82,11 +82,11 @@ export default function RestockPage() {
       <section className="space-y-4">
         <div className="flex items-center gap-3">
           <span className="bg-primary text-on-primary w-10 h-10 flex items-center justify-center font-black rounded-lg">3</span>
-          <h2 className="text-xl font-bold text-on-surface">輸入重量 (公噸)</h2>
+          <h2 className="text-xl font-bold text-on-surface">輸入重量 (公斤)</h2>
         </div>
         <div className="flex items-center justify-between bg-surface-container p-3 rounded-2xl">
           <button
-            onClick={() => handleWeightChange(-1)}
+            onClick={() => handleWeightChange(-100)}
             className="w-20 h-20 bg-surface-container-lowest flex items-center justify-center rounded-xl border-2 border-outline-variant/20 text-primary active:scale-90 transition-transform"
           >
             <span className="material-symbols-outlined text-[40px] font-black">remove</span>
@@ -96,13 +96,13 @@ export default function RestockPage() {
               className="w-32 bg-transparent border-none text-center text-[48px] font-black text-on-surface focus:ring-0"
               type="number"
               value={weight}
-              onChange={(e) => setWeight(parseFloat(e.target.value) || 0)}
-              step="0.1"
+              onChange={(e) => setWeight(parseInt(e.target.value) || 0)}
+              step="10"
             />
-            <div className="text-sm font-bold uppercase tracking-tighter text-slate-500 -mt-2">公噸</div>
+            <div className="text-sm font-bold uppercase tracking-tighter text-slate-500 -mt-2">公斤</div>
           </div>
           <button
-            onClick={() => handleWeightChange(1)}
+            onClick={() => handleWeightChange(100)}
             className="w-20 h-20 bg-surface-container-lowest flex items-center justify-center rounded-xl border-2 border-outline-variant/20 text-primary active:scale-90 transition-transform"
           >
             <span className="material-symbols-outlined text-[40px] font-black">add</span>
@@ -110,20 +110,21 @@ export default function RestockPage() {
         </div>
       </section>
 
-      {/* Step 4: Cost per Ton */}
+      {/* Step 4: Cost per Unit */}
       <section className="space-y-4">
         <div className="flex items-center gap-3">
           <span className="bg-primary text-on-primary w-10 h-10 flex items-center justify-center font-black rounded-lg">4</span>
-          <h2 className="text-xl font-bold text-on-surface">每噸單價</h2>
+          <h2 className="text-xl font-bold text-on-surface">每公斤單價</h2>
         </div>
         <div className="relative">
           <span className="absolute left-6 top-1/2 -translate-y-1/2 text-lg font-bold text-slate-400">NT$</span>
           <input
             className="w-full h-[72px] bg-surface-container-lowest border-2 border-outline-variant/20 rounded-lg pl-16 pr-6 text-lg font-bold focus:border-primary focus:ring-0"
-            placeholder="24,500"
+            placeholder="24.5"
             type="number"
-            value={costPerTon}
-            onChange={(e) => setCostPerTon(e.target.value)}
+            step="0.1"
+            value={costPerKg}
+            onChange={(e) => setCostPerKg(e.target.value)}
           />
         </div>
       </section>
