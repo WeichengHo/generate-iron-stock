@@ -9,7 +9,7 @@ export default function Home() {
         <div className="flex items-end justify-between">
           <div>
             <p className="text-label-md uppercase tracking-widest text-on-surface-variant font-bold mb-1">鋼筋總庫存</p>
-            <h2 className="text-[44px] font-black leading-none text-primary">1,248 公噸</h2>
+            <h2 className="text-[44px] font-black leading-none text-primary">1,248 公斤</h2>
           </div>
           <div className="bg-tertiary-container text-on-tertiary-container px-4 py-2 rounded-lg flex items-center gap-2 mb-2">
             <span className="material-symbols-outlined text-xl" style={{ fontVariationSettings: "'FILL' 1" }}>check_circle</span>
@@ -48,11 +48,11 @@ export default function Home() {
               </div>
               <div>
                 <p className="text-2xl font-bold text-on-surface">3/8&quot; 直徑</p>
-                <p className="text-on-surface-variant text-xl">342 公噸</p>
+                <p className="text-on-surface-variant text-xl">342 公斤</p>
               </div>
             </div>
-            <div className="bg-tertiary-container text-on-tertiary-container px-4 py-2 rounded-lg">
-              <span className="font-bold text-sm uppercase tracking-wider">庫存正常</span>
+            <div className="flex items-center justify-center w-10 h-10 bg-tertiary-container text-on-tertiary-container rounded-full">
+              <span className="material-symbols-outlined text-2xl" style={{ fontVariationSettings: "'FILL' 1" }}>check_circle</span>
             </div>
           </div>
           {/* Size #4 */}
@@ -63,11 +63,11 @@ export default function Home() {
               </div>
               <div>
                 <p className="text-2xl font-bold text-on-surface">1/2&quot; 直徑</p>
-                <p className="text-on-surface-variant text-xl">412 公噸</p>
+                <p className="text-on-surface-variant text-xl">412 公斤</p>
               </div>
             </div>
-            <div className="bg-tertiary-container text-on-tertiary-container px-4 py-2 rounded-lg">
-              <span className="font-bold text-sm uppercase tracking-wider">庫存正常</span>
+            <div className="flex items-center justify-center w-10 h-10 bg-tertiary-container text-on-tertiary-container rounded-full">
+              <span className="material-symbols-outlined text-2xl" style={{ fontVariationSettings: "'FILL' 1" }}>check_circle</span>
             </div>
           </div>
           {/* Size #5 */}
@@ -78,12 +78,11 @@ export default function Home() {
               </div>
               <div>
                 <p className="text-2xl font-bold text-on-surface">5/8&quot; 直徑</p>
-                <p className="text-on-surface-variant text-xl">12 公噸</p>
+                <p className="text-on-surface-variant text-xl">12 公斤</p>
               </div>
             </div>
-            <div className="bg-error-container text-on-error-container px-4 py-2 rounded-lg flex items-center gap-1">
-              <span className="material-symbols-outlined text-sm" style={{ fontVariationSettings: "'FILL' 1" }}>warning</span>
-              <span className="font-bold text-sm uppercase tracking-wider">庫存偏低</span>
+            <div className="flex items-center justify-center w-10 h-10 bg-error-container text-on-error-container rounded-full">
+              <span className="material-symbols-outlined text-2xl" style={{ fontVariationSettings: "'FILL' 1" }}>warning</span>
             </div>
           </div>
           {/* Size #8 */}
@@ -94,22 +93,13 @@ export default function Home() {
               </div>
               <div>
                 <p className="text-2xl font-bold text-on-surface">1&quot; 直徑</p>
-                <p className="text-error text-xl font-bold">0 公噸</p>
+                <p className="text-error text-xl font-bold">0 公斤</p>
               </div>
             </div>
-            <div className="bg-error text-on-error px-4 py-2 rounded-lg">
-              <span className="font-bold text-sm uppercase tracking-wider">已斷貨</span>
+            <div className="flex items-center justify-center w-10 h-10 bg-error text-on-error rounded-full">
+              <span className="material-symbols-outlined text-2xl" style={{ fontVariationSettings: "'FILL' 1" }}>cancel</span>
             </div>
           </div>
-        </div>
-      </section>
-
-      {/* Warehouse Visual */}
-      <section className="rounded-2xl overflow-hidden relative h-[240px] shadow-xl">
-        <img alt="Steel Rebar Warehouse" className="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCdZ8PtFfaZ1BOYltbt2uIrekm3wn40zewUY0__-KheCdqoiXYsFaRjteA-1CAXfEiqhEj3j7vRoQs-TQD621xElfHtS7RXrw3m71FLHNlXyHuwncFNDwKeS8ZXpfJTGjT0pfU1Ky8lVqtvIzaIROM8FP1h8RGjq1ihy2yS4G2z5pgLAbIhQF1MVxDxGwiV6AKSZzR_hC6p0iZ4VZ9Q2UdtLjGMFa4EGb2KlJVkkkdvWp3j5WyITXovQqgoAw5O7j9c3djTvcT4yIo" />
-        <div className="absolute inset-0 bg-gradient-to-t from-primary/80 to-transparent flex flex-col justify-end p-8">
-          <span className="text-white text-3xl font-black uppercase tracking-tight">第 4 號倉儲區 使用中</span>
-          <span className="text-white/80 text-lg uppercase tracking-widest">最後掃描：今日 14:02</span>
         </div>
       </section>
     </main>
