@@ -1,4 +1,30 @@
+"use client";
+
+import { useState } from "react";
+
 export default function HistoryPage() {
+  const [activeTab, setActiveTab] = useState<"inbound" | "outbound">("inbound");
+
+  const handleExport = () => {
+    alert(`正在準備匯出${activeTab === "inbound" ? "進貨" : "出貨"}報表...`);
+  };
+
+  const inboundLogs = [
+    { title: "熱軋鋼捲", date: "2月 24", batch: "#882", amount: "+12.5t", type: "inbound" },
+    { title: "結構工字鋼", date: "2月 22", batch: "#901", amount: "+48.0t", type: "inbound" },
+    { title: "鋼筋", date: "2月 20", batch: "#742", amount: "+5.2t", type: "inbound" },
+    { title: "鍍鋅板", date: "2月 18", batch: "#112", amount: "+22.0t", type: "inbound" },
+  ];
+
+  const outboundLogs = [
+    { title: "熱軋鋼捲", date: "2月 25", batch: "#882", amount: "-3.5t", type: "outbound" },
+    { title: "鋼筋 (#3)", date: "2月 23", batch: "#740", amount: "-12.0t", type: "outbound" },
+    { title: "結構工字鋼", date: "2月 21", batch: "#899", amount: "-18.5t", type: "outbound" },
+    { title: "鋼筋 (#5)", date: "2月 19", batch: "#730", amount: "-8.0t", type: "outbound" },
+  ];
+
+  const logs = activeTab === "inbound" ? inboundLogs : outboundLogs;
+
   return (
     <main className="max-w-md mx-auto px-4 pt-6 pb-32 space-y-8">
       {/* Section: Price Trends Chart */}
@@ -45,66 +71,64 @@ export default function HistoryPage() {
 
       {/* Section: Navigation Tabs */}
       <div className="flex gap-2 p-1 bg-surface-container rounded-xl">
-        <button className="flex-1 py-4 px-2 bg-surface-container-lowest text-primary font-bold rounded-lg shadow-sm border-2 border-primary transition-transform active:scale-95">進貨明細</button>
-        <button className="flex-1 py-4 px-2 text-on-surface-variant font-bold rounded-lg hover:bg-surface-container-high transition-transform active:scale-95">出貨明細</button>
+        <button
+          onClick={() => setActiveTab("inbound")}
+          className={`flex-1 py-4 px-2 font-bold rounded-lg transition-all active:scale-95 ${
+            activeTab === "inbound"
+              ? "bg-surface-container-lowest text-primary shadow-sm border-2 border-primary"
+              : "text-on-surface-variant hover:bg-surface-container-high"
+          }`}
+        >
+          進貨明細
+        </button>
+        <button
+          onClick={() => setActiveTab("outbound")}
+          className={`flex-1 py-4 px-2 font-bold rounded-lg transition-all active:scale-95 ${
+            activeTab === "outbound"
+              ? "bg-surface-container-lowest text-primary shadow-sm border-2 border-primary"
+              : "text-on-surface-variant hover:bg-surface-container-high"
+          }`}
+        >
+          出貨明細
+        </button>
       </div>
 
       {/* Section: High-Contrast Log List */}
       <div className="space-y-4">
         <h3 className="font-headline font-bold text-xl text-on-surface ml-1">最近紀錄</h3>
         <div className="flex flex-col space-y-3">
-          {/* Log Card 1 */}
-          <div className="bg-surface-container-lowest p-5 rounded-xl flex justify-between items-center shadow-sm">
-            <div className="space-y-1">
-              <p className="text-lg font-bold text-on-surface">熱軋鋼捲</p>
-              <p className="text-sm font-medium text-outline uppercase tracking-wider">2月 24 • 批次 #882</p>
+          {logs.map((log, index) => (
+            <div
+              key={index}
+              className={`p-5 rounded-xl flex justify-between items-center ${
+                index % 2 === 0 ? "bg-surface-container-lowest shadow-sm" : "bg-surface-container-low"
+              }`}
+            >
+              <div className="space-y-1">
+                <p className="text-lg font-bold text-on-surface">{log.title}</p>
+                <p className="text-sm font-medium text-outline uppercase tracking-wider">{log.date} • 批次 {log.batch}</p>
+              </div>
+              <div className="flex items-center gap-2">
+                <span
+                  className={`material-symbols-outlined font-black ${activeTab === 'inbound' ? 'text-secondary' : 'text-error'}`}
+                  style={{ fontVariationSettings: "'FILL' 1" }}
+                >
+                  {activeTab === 'inbound' ? 'add_circle' : 'remove_circle'}
+                </span>
+                <span className={`text-2xl font-black ${activeTab === 'inbound' ? 'text-secondary' : 'text-error'}`}>
+                  {log.amount}
+                </span>
+              </div>
             </div>
-            <div className="flex items-center gap-2">
-              <span className="material-symbols-outlined text-secondary font-black" style={{ fontVariationSettings: "'FILL' 1" }}>add_circle</span>
-              <span className="text-2xl font-black text-secondary">+12.5t</span>
-            </div>
-          </div>
-
-          {/* Log Card 2 (Zebra stripe effect) */}
-          <div className="bg-surface-container-low p-5 rounded-xl flex justify-between items-center">
-            <div className="space-y-1">
-              <p className="text-lg font-bold text-on-surface">結構工字鋼</p>
-              <p className="text-sm font-medium text-outline uppercase tracking-wider">2月 22 • 批次 #901</p>
-            </div>
-            <div className="flex items-center gap-2">
-              <span className="material-symbols-outlined text-secondary font-black" style={{ fontVariationSettings: "'FILL' 1" }}>add_circle</span>
-              <span className="text-2xl font-black text-secondary">+48.0t</span>
-            </div>
-          </div>
-
-          {/* Log Card 3 */}
-          <div className="bg-surface-container-lowest p-5 rounded-xl flex justify-between items-center shadow-sm">
-            <div className="space-y-1">
-              <p className="text-lg font-bold text-on-surface">鋼筋</p>
-              <p className="text-sm font-medium text-outline uppercase tracking-wider">2月 20 • 批次 #742</p>
-            </div>
-            <div className="flex items-center gap-2">
-              <span className="material-symbols-outlined text-secondary font-black" style={{ fontVariationSettings: "'FILL' 1" }}>add_circle</span>
-              <span className="text-2xl font-black text-secondary">+5.2t</span>
-            </div>
-          </div>
-
-          {/* Log Card 4 */}
-          <div className="bg-surface-container-low p-5 rounded-xl flex justify-between items-center">
-            <div className="space-y-1">
-              <p className="text-lg font-bold text-on-surface">鍍鋅板</p>
-              <p className="text-sm font-medium text-outline uppercase tracking-wider">2月 18 • 批次 #112</p>
-            </div>
-            <div className="flex items-center gap-2">
-              <span className="material-symbols-outlined text-secondary font-black" style={{ fontVariationSettings: "'FILL' 1" }}>add_circle</span>
-              <span className="text-2xl font-black text-secondary">+22.0t</span>
-            </div>
-          </div>
+          ))}
         </div>
       </div>
 
       {/* FAB: Export Report */}
-      <button className="fixed bottom-28 right-6 bg-primary text-on-primary w-20 h-20 rounded-full shadow-2xl flex flex-col items-center justify-center transition-transform active:scale-90 z-40 border-4 border-white">
+      <button
+        onClick={handleExport}
+        className="fixed bottom-28 right-6 bg-primary text-on-primary w-20 h-20 rounded-full shadow-2xl flex flex-col items-center justify-center transition-transform hover:scale-105 active:scale-90 z-40 border-4 border-white"
+      >
         <span className="material-symbols-outlined text-3xl">download</span>
         <span className="text-[10px] font-black uppercase tracking-tighter">匯出報表</span>
       </button>
